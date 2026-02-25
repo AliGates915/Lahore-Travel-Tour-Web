@@ -15,14 +15,13 @@ export default function PopularPlaces() {
         const res = await axios.get("https://api.unsplash.com/photos/random", {
           params: {
             query: "Lahore adventure",
-            count: places.length, // ✅ correct
+            count: places.length,
             orientation: "landscape",
             client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
           },
         });
 
-        setPhotos(res.data); // ✅ no .results
-        console.log(res.data);
+        setPhotos(res.data);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -32,23 +31,24 @@ export default function PopularPlaces() {
   }, []);
 
   return (
-    <section className="bg-lightblue py-20 px-6">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="bg-lightblue py-16 md:py-20">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-0">
         {/* Heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <div className="text-center mb-12 md:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
             <span className="text-primary border-b-4 border-primary pb-1">
               Popular
             </span>{" "}
             Places
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 mt-2 text-sm sm:text-base">
             Must-visit destinations in Lahore
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-20 justify-items-center">
+        {/* Cards Grid */}
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 xl:gap-16 justify-items-center">
           {places.map((place, index) => {
             const imageUrl =
               Array.isArray(photos) && photos[index]
@@ -58,20 +58,16 @@ export default function PopularPlaces() {
             return (
               <div
                 key={index}
-                className="w-[300px] h-full flex flex-col rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 bg-transparent"
+                className="w-[300px] flex flex-col rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 bg-transparent"
               >
                 {/* Image */}
                 <div className="relative h-52 w-full overflow-hidden rounded-2xl">
-                  {imageUrl ? (
-                    <Image
-                      src={imageUrl}
-                      alt={place.title}
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-200 animate-pulse rounded-2xl" />
-                  )}
+                  <Image
+                    src={imageUrl}
+                    alt={place.title}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-110"
+                  />
 
                   <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
                     <Heart size={18} className="text-primary" />
@@ -95,7 +91,6 @@ export default function PopularPlaces() {
 
                   <div className="h-px bg-gray-200 my-4"></div>
 
-                  {/* Tags stay at bottom */}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {place.tags.map((tag, i) => (
                       <span
@@ -112,9 +107,9 @@ export default function PopularPlaces() {
           })}
         </div>
 
-        {/* Button */}
-        <div className="text-center mt-14">
-          <button className="bg-primary text-white px-8 py-3 rounded-full hover:scale-105 transition duration-300">
+        {/* View All Button */}
+        <div className="text-center mt-12 md:mt-14">
+          <button className="w-full sm:w-auto bg-primary text-white px-8 py-3 rounded-full hover:scale-105 transition duration-300">
             View All →
           </button>
         </div>
