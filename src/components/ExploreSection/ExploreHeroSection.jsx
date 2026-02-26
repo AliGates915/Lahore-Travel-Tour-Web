@@ -2,17 +2,14 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-
-const HeroSection = () => {
- const router = useRouter();  
+const ExploreHeroSection = () => {
   return (
     <section className="relative h-[786px]  w-full">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/heroBanner.png')", // put your image inside public/images
+          backgroundImage: "url('/images/explore.png')", // put your image inside public/images
         }}
       />
 
@@ -42,17 +39,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold leading-tight"
           >
-            Discover the Heart <br />
-            of{" "}
-            <span className="relative inline-block text-primary">
-              Pakistan
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="absolute left-0 lg:-bottom-0 -bottom-1  h-[8px] bg-gradient-to-r from-primary via-pink-400 to-primary rounded-full"
-              />
-            </span>
+            Explore Lahore
+            <br />
           </motion.h1>
 
           <motion.p
@@ -76,14 +64,14 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="mt-8 flex flex-col sm:flex-row gap-4"
           >
-            <button  onClick={() => router.push("/explore-places")} className="bg-primary text-white px-6 py-3 rounded-[15px] font-medium hover:scale-105 transition duration-300 flex items-center gap-2">
+            <button className="bg-primary text-white px-6 py-3 rounded-[15px] font-medium hover:scale-105 transition duration-300 flex items-center gap-2">
               <Image
-                src="/images/exploreicon.svg"
+                src="/images/about-icons.svg"
                 alt="Explore Icon"
                 width={20}
                 height={20}
               />
-              Explore Lahore
+              About Us
             </button>
 
             <button className="bg-white/20 backdrop-blur-none border border-white/30 text-white px-6 py-3 rounded-[15px] font-medium hover:bg-white/30 transition duration-300">
@@ -96,4 +84,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default ExploreHeroSection;
