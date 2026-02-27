@@ -24,10 +24,13 @@ body {
 
 
 
+
+
 @theme {
   /* Tailwind utilities you use directly */
   --color-primary: #E61C5D; 
   --color-primary-dark: #CC184F; 
+  --color-primary-mid: #fb64b6; 
   --color-primary-footer: #E61C5D; 
   --font-volkhov: "Volkhov", serif;             /* text-primary, bg-primary */
   --color-secondary: #E61C5D1A;              /* text-primary, bg-primary */

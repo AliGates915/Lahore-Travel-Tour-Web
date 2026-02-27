@@ -13,15 +13,19 @@ export default function PopularPlaces() {
     const fetchImages = async () => {
       try {
         const res = await axios.get("https://api.unsplash.com/photos/random", {
+          headers: {
+            Authorization: `Client-ID ${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`,
+          },
           params: {
             query: "Lahore adventure",
-            count: places.length,
+            count: 4,
             orientation: "landscape",
-            client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
           },
         });
 
-        setPhotos(res.data);
+        setPhotos(res?.data);
+       
+        
       } catch (error) {
         console.error("Error fetching images:", error);
       }
